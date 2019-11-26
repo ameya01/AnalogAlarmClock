@@ -115,15 +115,15 @@ public class MySurfaceView extends SurfaceView implements Runnable {
             }
             else{
                 pHr.setColor(Color.GREEN);
-                pMin.setColor(Color.BLACK);
-                pMilli.setColor(Color.GRAY);
+                pMin.setColor(Color.MAGENTA);
+                pMilli.setColor(Color.CYAN);
                 pSec.setColor(Color.RED);
                 paint.setColor(Color.BLUE);
             }
             RegPoly secMarks = new RegPoly(60,300,getWidth()/2,getHeight()/2,canvas,paint);
             RegPoly hourMarks = new RegPoly(12, 300 - 20, getWidth() / 2, getHeight() / 2, canvas, paint);
             RegPoly hourHand = new RegPoly(60, 300 - 100, getWidth() / 2, getHeight() / 2, canvas, pHr);
-            RegPoly minHand = new RegPoly(60, 300 - 50, getWidth() / 2, getHeight() / 2, canvas, pMin);
+            RegPoly minHand = new RegPoly(60, 300 - 50, getWidth() / 2 , getHeight() / 2, canvas, pMin);
             RegPoly secHand = new RegPoly(60, 300 - 30, getWidth() / 2, getHeight() / 2, canvas, pSec);
             RegPoly milliMarks = new RegPoly(60,60,getWidth()/3,getHeight()/2,canvas,paint);
             RegPoly milliHand = new RegPoly(60, 60, getWidth() /3, getHeight() / 2, canvas, pMilli);
