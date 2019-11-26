@@ -88,15 +88,6 @@
             android:layout_margin="6dp"
             app:colorSeeds="@array/material_colors" />
 
-        <SeekBar
-            android:id="@+id/colorSlider"
-            android:layout_width="397dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
-            android:layout_margin="6dp"
-            android:layout_weight="1"
-            app:colorSeeds="@array/material_colors" />
-
 
         <TextView
             android:id="@+id/textView2"
