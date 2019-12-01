@@ -96,13 +96,14 @@ public class MySurfaceView extends SurfaceView implements Runnable {
             canvas.drawColor(Color.WHITE);
             Paint paint = new Paint();
             Paint pHr = new Paint();
-            pHr.setStrokeWidth(15);
+            pHr.setStrokeWidth(12);
             Paint pSec = new Paint();
 
-            pSec.setStrokeWidth(14);
+            pSec.setStrokeWidth(12);
             Paint pMin = new Paint();
+            pMin.setStrokeWidth(12);
             Paint pMilli = new Paint();
-            pMilli.setStrokeWidth(13);
+            pMilli.setStrokeWidth(8);
             pMin.setColor(Integer.parseInt(minHandColor));
             paint.setTextSize(40);
 
@@ -139,6 +140,7 @@ public class MySurfaceView extends SurfaceView implements Runnable {
                 canvas.drawText(Integer.toString(i), number.getX((i + 9) % 12), number.getY((i + 9) % 12), paint);
             }
             try {
+                //Thread.sleep(1000);
                 Thread.sleep(1000/60);
                 milli++;
             } catch (InterruptedException e) {

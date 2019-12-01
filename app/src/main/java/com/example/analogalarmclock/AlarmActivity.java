@@ -1,4 +1,9 @@
 package com.example.analogalarmclock;
 
-public class AlarmActivity {
+import android.app.Activity;
+
+public class AlarmActivity extends Activity {
+
+    DataPicker pickerDate;
+
 }
