@@ -131,10 +131,10 @@ public class MySurfaceView extends SurfaceView implements Runnable {
             RegPoly milliHand = new RegPoly(60, 60, getWidth() /3, getHeight() / 2, canvas, pMilli);
 
             RegPoly hourMarks = new RegPoly(12, 250, getWidth() / 2, getHeight() / 2, canvas, paint);
-            RegPoly hourHand = new RegPoly(60, 250 - 100, getWidth() / 2, getHeight() / 2, canvas, pHr);
+            RegPoly hourHand = new RegPoly(60, 250 - 120, getWidth() / 2, getHeight() / 2, canvas, pHr);
 
             RegPoly minMarks = new RegPoly(60,250,getWidth()/2,getHeight()/2,canvas,paint);
-            RegPoly minHand = new RegPoly(60, 250 - 40, getWidth() / 2 , getHeight() / 2, canvas, pMin);
+            RegPoly minHand = new RegPoly(60, 250 - 60, getWidth() / 2 , getHeight() / 2, canvas, pMin);
 
 
 
