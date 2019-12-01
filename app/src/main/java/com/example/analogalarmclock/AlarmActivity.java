@@ -28,16 +28,21 @@ public class AlarmActivity extends Activity {
     Button buttonSetAlarm;
     TextView info;
     Button cancelAlarm;
-    final static int RQS_1 =1;
+    final static int RQS_1 = 1;
     String alarmTime;
 
-    public String getAlarmTime() {return  alarmTime;}
+    public String getAlarmTime() {
+        return alarmTime;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
-        Log.d("Debug","Called Alarm Activity");
+    protected void onCreate(Bundle savedInstanceState) {
+        //ActionBar actionBar = getActionBar();
+        //actionBar.show();
+        Log.d("Debugg","Called Alarm Activity");
         super.onCreate(savedInstanceState);
         createNotificationChannel();
+        //this.setTheme(android.R.style.Theme_Holo_Light_Panel);
         setContentView(R.layout.activity_alarm);
 
         info = (TextView) findViewById(R.id.info);
@@ -55,11 +60,12 @@ public class AlarmActivity extends Activity {
         pickerTime.setCurrentHour(now.get(Calendar.HOUR_OF_DAY));
         pickerTime.setCurrentMinute(now.get(Calendar.MINUTE));
 
-        buttonSetAlarm = (Button) findViewById((R.id.setalarm));
-        cancelAlarm = (Button) findViewById(R.id.setalarm);
+        buttonSetAlarm = (Button) findViewById(R.id.setalarm);
+        cancelAlarm = (Button) findViewById(R.id.cancel);
         buttonSetAlarm.setOnClickListener(new OnClickListener() {
+
             @Override
-            public void onClick(View view) {
+            public void onClick(View arg0) {
                 Calendar current = Calendar.getInstance();
 
                 Calendar cal = Calendar.getInstance();
@@ -70,15 +76,15 @@ public class AlarmActivity extends Activity {
                         pickerTime.getCurrentMinute(),
                         00);
 
-                if (cal.compareTo(current) <=0){
+                if (cal.compareTo(current) <= 0) {
                     Toast.makeText(getApplicationContext(),
-                            "Invalid Data/Time",Toast.LENGTH_LONG).show();
+                            "Invalid Date/Time", Toast.LENGTH_LONG).show();
                 } else {
                     setAlarm(cal);
                 }
-
             }
         });
+
         cancelAlarm.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -89,11 +95,10 @@ public class AlarmActivity extends Activity {
             }
 
         });
-
     }
 
     private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)  {
             NotificationChannel channel = new NotificationChannel(
                     "channel_1", "Channel 1", NotificationManager.IMPORTANCE_HIGH);
 
@@ -102,23 +107,29 @@ public class AlarmActivity extends Activity {
         }
     }
 
-    private void setAlarm(Calendar targetCal){
+    private void setAlarm(Calendar targetCal) {
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
         alarmTime = sdf.format(targetCal.getTime());
-        Toast.makeText(this,"Next alarm at" + alarmTime,Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(getBaseContext(),AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(),RQS_1,intent,0);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(),pendingIntent);
+        Toast.makeText(this, "Next alarm at " + alarmTime, Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, targetCal.getTimeInMillis(), pendingIntent);
     }
 
-    private void cancelAlarm(){
+    private void cancelAlarm() {
 
-        Toast.makeText(this,"Alarm cancelled", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(getBaseContext(),AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(),RQS_1,intent,0);
+        Toast.makeText(this, "Alarm cancelled", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
     }
+
+
+
+
+
 
 }
