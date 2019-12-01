@@ -106,6 +106,9 @@ public class MySurfaceView extends SurfaceView implements Runnable {
             pMilli.setStrokeWidth(8);
             pMin.setColor(Integer.parseInt(minHandColor));
             paint.setTextSize(40);
+            paint.setColor(Color.WHITE);
+            paint.setStyle(Paint.Style.FILL);
+
 
             if(flag){
                 pHr.setColor(Integer.parseInt(hrHandColor));
@@ -121,15 +124,17 @@ public class MySurfaceView extends SurfaceView implements Runnable {
                 pSec.setColor(Color.RED);
                 paint.setColor(Color.BLUE);
             }
-            RegPoly secMarks = new RegPoly(60,300,getWidth()/2,getHeight()/2,canvas,paint);
-            RegPoly hourMarks = new RegPoly(12, 300 - 20, getWidth() / 2, getHeight() / 2, canvas, paint);
-            RegPoly hourHand = new RegPoly(60, 300 - 100, getWidth() / 2, getHeight() / 2, canvas, pHr);
-            RegPoly minHand = new RegPoly(60, 300 - 50, getWidth() / 2 , getHeight() / 2, canvas, pMin);
-            RegPoly secHand = new RegPoly(60, 300 - 30, getWidth() / 2, getHeight() / 2, canvas, pSec);
+            RegPoly secMarks = new RegPoly(60,250,getWidth()/2,getHeight()/2,canvas,paint);
             RegPoly milliMarks = new RegPoly(60,60,getWidth()/3,getHeight()/2,canvas,paint);
+            RegPoly hourMarks = new RegPoly(12, 250 - 20, getWidth() / 2, getHeight() / 2, canvas, paint);
+            RegPoly hourHand = new RegPoly(60, 250 - 100, getWidth() / 2, getHeight() / 2, canvas, pHr);
+            RegPoly minHand = new RegPoly(60, 250 - 50, getWidth() / 2 , getHeight() / 2, canvas, pMin);
+            RegPoly secHand = new RegPoly(60, 250 - 30, getWidth() / 2, getHeight() / 2, canvas, pSec);
             RegPoly milliHand = new RegPoly(60, 60, getWidth() /3, getHeight() / 2, canvas, pMilli);
-            RegPoly body = new RegPoly(60, 320, getWidth() / 2, getHeight() / 2, canvas, paint);
-            RegPoly number = new RegPoly(12, 360, getWidth() / 2, getHeight() / 2, canvas, paint);
+            RegPoly body = new RegPoly(60, 260, getWidth() / 2, getHeight() / 2, canvas, paint);
+            RegPoly number = new RegPoly(12, 290, getWidth() / 2, getHeight() / 2, canvas, paint);
+
+
             secMarks.drawPoints();
             hourMarks.drawPoints();
             milliMarks.drawPoints();
@@ -157,6 +162,7 @@ public class MySurfaceView extends SurfaceView implements Runnable {
             secHand.drawRadius(sec + 45);
             minHand.drawRadius(min + 45);
             hourHand.drawRadius((hour * 5) + (min / 12) + 45);
+
             surfaceHolder.unlockCanvasAndPost(canvas);
 
 
