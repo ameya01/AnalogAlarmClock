@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
         bodyClock= sp.getString("bodyClock","4598972");
 
-        Log.d("Debugg","Lnght" + hrHand.length());
-        if(flag == true) {
+        Log.d("Debug","Lnght" + hrHand.length());
+        if(flag) {
             mySurfaceView.setSurfaceViewCOlor(hrHand, 1);
             mySurfaceView.setSurfaceViewCOlor(minHand, 2);
             mySurfaceView.setSurfaceViewCOlor(secHand, 3);
@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     mySurfaceView.setSurfaceViewCOlor(String.valueOf(seekBar.getColor()),5);
                     editor.putString("bodyClock", String.valueOf(seekBar.getColor()));
                 }
+                editor.apply();
                 editor.commit();
             }
         });
